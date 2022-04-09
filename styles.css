@@ -1,30 +1,34 @@
 
+.flex-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 #grid-container{
     display:grid;
     grid-template-columns: repeat(16, 1fr);
     justify-items: center;
-    background: rgba(0,0,0,0.1);
+    background: rgba(191, 185, 202, 0.438);
+    padding: 10px;
+    border: 3px solid #009B77;
 
     /*
     column-gap: 10px;
     row-gap: 10px;
     gap: 0px;
     */
-    gap: 1rem;
+    
 
     /*
     This is just squeezing the grid-container grid down,
     which I think is preventing it from centering.
     It makes it look better but it's not how it should work.
     */
-    width: 1px;
-    height: 1px;
+    
 }
 
 .inner-divs {
     border: 3px solid #009B77;
-    text-align: center;
-
     /*
     Using height and width might be better than padding?
     */
