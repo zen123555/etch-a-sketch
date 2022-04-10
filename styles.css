@@ -8,7 +8,7 @@ h1 {
     color: #26b8ad;
 }
 
-.rainbow-div {
+.mode-div {
     margin-top: 20px;
     font-family: 'Rubik Moonrocks', cursive;
 }
@@ -60,11 +60,23 @@ h1 {
     font-size: 16px;
     margin: 15px;
     border-radius: 12px;
+    box-shadow: 0 9px #999;
 }
 
 #button-div, #grid-container{
     background: #dac16f;
 }
+
+.button-style:hover {
+    background-color: #3e8e41
+}
+
+.button-style:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
 
 .rainbow:hover{
     background-image: linear-gradient(
