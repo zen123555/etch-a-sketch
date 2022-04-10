@@ -8,6 +8,11 @@ h1 {
     color: #26b8ad;
 }
 
+.rainbow-div {
+    margin-top: 20px;
+    font-family: 'Rubik Moonrocks', cursive;
+}
+
 .main-flex {
     display: flex;
     flex-direction: column;
