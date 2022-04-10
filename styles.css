@@ -1,4 +1,20 @@
 
+body {
+    background:#b9da50;
+}
+
+h1 {
+    font-family: 'Rubik Moonrocks', cursive;
+    color: #26b8ad;
+}
+
+.main-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .flex-container{
     display: flex;
     justify-content: space-evenly;
@@ -6,37 +22,67 @@
 
 #grid-container{
     display:grid;
-    grid-template-columns: repeat(16, 1fr);
-    justify-items: center;
-    background: rgba(191, 185, 202, 0.438);
+    grid-template-columns: repeat(16, minmax(5px, auto));
     padding: 10px;
-    border: 3px solid #009B77;
-
-    /*
-    column-gap: 10px;
-    row-gap: 10px;
-    gap: 0px;
-    */
-    
-
-    /*
-    This is just squeezing the grid-container grid down,
-    which I think is preventing it from centering.
-    It makes it look better but it's not how it should work.
-    */
-    
+    border: 3px solid #26b8ad;
+    border-radius: 12px;
+    height: 700px;
+    width: 700px;
 }
 
-.inner-divs {
-    border: 3px solid #009B77;
-    /*
-    Using height and width might be better than padding?
-    */
-    height: 20px;
-    width: 20px;
+.inner-divs-grid {
+    border: 1px solid #148231;
 }
 
 #button-div{
+    display: flex;
+    flex-direction: column;
     padding: 50px;
     text-align: center;
+    gap: 85px;
+    border: 3px solid #26b8ad;
+    border-radius: 12px;
 }
+
+.button-style{
+    background-color: #148231; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 15px;
+    border-radius: 12px;
+}
+
+#button-div, #grid-container{
+    background: #dac16f;
+}
+
+.rainbow:hover{
+    background-image: linear-gradient(
+       to right, 
+       #E7484F,
+       #E7484F 16.65%,
+       #F68B1D 16.65%,
+       #F68B1D 33.3%,
+       #FCED00 33.3%,
+       #FCED00 49.95%,
+       #009E4F 49.95%,
+       #009E4F 66.6%,
+       #00AAC3 66.6%,
+       #00AAC3 83.25%,
+       #732982 83.25%,
+       #732982 100%,
+       #E7484F 100%
+     );
+   animation:slidebg 2s linear infinite;
+ }
+
+ @keyframes slidebg {
+    to {
+      background-position:20vw;
+    }
+  }
