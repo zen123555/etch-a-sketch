@@ -1,22 +1,28 @@
+/*
+configure extra button styling
+
+const buttonDiv = document.querySelector('#button-div');
+const buttons = buttonDiv.childNodes;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        button.classList.add('active');
+  });
+});
+*/
 
 /*
 get neccessary elements
 */
 const mainFlex = document.querySelector('.main-flex');
 const gridContainer = document.querySelector('#grid-container');
-const rainbowDiv = document.createElement('div');
+const modeDiv = document.createElement('div');
 
-//configure rainbow mode
-rainbowDiv.classList.add('mode-div');
+
+//configure rainbow and eraser modes
+modeDiv.classList.add('mode-div');
 let rainbowFlag;
-
-
-/*
-//configure eraser mode
-eraserDiv.classList.add('mode-div');
 let eraserFlag;
-*/
-
 
 /*
 initialize buttons
@@ -30,10 +36,9 @@ clearButton.addEventListener('click', clearGrid);
 const rainbowButton =  document.querySelector('#rainbow-button');
 rainbowButton.addEventListener('click', rainbowMode);
 
-/*
 const eraserButton = document.querySelector('#eraser-button');
 eraserButton.addEventListener('click', eraserMode);
-*/
+
 
 //create first grid (16x16)
 initialGrid();
@@ -42,28 +47,27 @@ initialGrid();
 Functions
 */
 
-/*
 //enter eraser mode
 function eraserMode(){
     eraserFlag = true;
-    mainFlex.appendChild(eraserDiv);
-    eraserDiv.textContent = 'ERASER MODE ACTIVATED!!!';
+    mainFlex.appendChild(modeDiv);
+    modeDiv.textContent = 'ERASER MODE ACTIVATED!!!';
+    endRainbow();
     applyMouseOver();
 }
-*/
+
 
 //enter rainbow mode
 function rainbowMode(){
     rainbowFlag = true;
-    mainFlex.appendChild(rainbowDiv);
-    rainbowDiv.textContent = 'RAINBOW MODE ACTIVATED!!!';
+    mainFlex.appendChild(modeDiv);
+    modeDiv.textContent = 'RAINBOW MODE ACTIVATED!!!';
     applyMouseOver();
 }
 
 //exit rainbow mode;
 function endRainbow(){
     rainbowFlag = false;
-    rainbowDiv.textContent = '';
 }
 
 //clear grid
@@ -72,7 +76,6 @@ function clearGrid(){
     innerDivs.forEach((div) => {
         div.style.cssText = 'background: #dac16f;';
     });
-    endRainbow();
 }
 
 //create initial 16x16 grid
@@ -85,15 +88,17 @@ function randomColor(){
     return randnum = '#' + Math.floor(Math.random()*16777215).toString(16);
 }
 
-//fill in squares on user-mouseover with colors based on rainbowFlag
+//fill in squares on user-mouseover with colors based on rainbowFlag and eraserFlag
 function applyMouseOver(){
     const innerDivs = gridContainer.childNodes;
     innerDivs.forEach((div) => {
         div.addEventListener('mouseover', (e) => {
-            if(!rainbowFlag){
-                e.target.style.cssText = 'background-color: black;';
-            }else{
+            if((!rainbowFlag) && (!eraserFlag)){
+                e.target.style.cssText = 'background-color: black;'; //default
+            }else if(rainbowFlag){
                 e.target.style.cssText = `background-color: ${randomColor()};`;
+            }else{
+                e.target.style.cssText = 'background-color: #dac16f;'; //eraser
             }
         });
     });
@@ -118,6 +123,5 @@ function createGrid(x){
             gridContainer.appendChild(div);
         }   
     }
-    endRainbow();
     applyMouseOver();
 }
